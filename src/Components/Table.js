@@ -11,6 +11,7 @@ const Table = () => {
     const [weightRange, setWeightRange] = useState(0);
     const [selectValue, setSelectValue] = useState('');
     const [sourceValue, setSourceValue] = useState('');
+
     const handleOrdersFiltering = (orders, filterOptions) => {
         return orders.filter(order => {
             if (filterOptions.costRange && order.cost > filterOptions.costRange) {
@@ -204,7 +205,7 @@ const Table = () => {
 
     return (
         <>
-            <div className='px-4 sm:px-[10vw] mt-6 text-[1.3rem] text-center'>
+            <div className='px-4 sm:px-[10vw] mt-6 text-[1.3rem] text-center text-base'>
                 <div className='flex flex-col sm:flex-row justify-between items-center'>
                     <div className='flex flex-col sm:flex-row items-center'>
                         <div className='flex items-center'>
@@ -254,7 +255,7 @@ const Table = () => {
                 <div className='flex flex-col sm:flex-row justify-between items-center mt-4'>
                     <div className='flex flex-col sm:flex-row items-center'>
                         <label className='mr-2'>Source</label>
-                        <input className='bg-gray-200 rounded-md'
+                        <input className='bg-gray-200 rounded-full px-2'
                             type='text'
                             value={sourceValue}
                             placeholder='Enter source'
@@ -273,32 +274,36 @@ const Table = () => {
             </div>
             <div className='px-4 sm:px-[10vw] mt-6 text-center'>
                 <button
-                    className='bg-blue-500 text-white px-4 py-2 rounded-md'
+                    className='bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600'
                     onClick={handleResetClick}
                 >
-                    Reset Filters
-                </button>
+                    Remove Filters </button>
+
             </div>
+
             <div className='px-4 sm:px-[10vw] mt-6'>
-                <table className='w-full'>
+                <table className='w-full my-10'>
+                    <caption className='text-2xl font-bold pb-4'>Orders</caption>
                     <thead>
-                        <tr className='border-b border-gray-300'>
+                        <tr className='border-b-2 border-black bg-slate-300'>
                             <th className='py-2'>User</th>
+                            <th className='py-2'>Shipper</th>
+                            <th className='py-2'>Weight</th>
+                            <th className='py-2'>Cost</th>
                             <th className='py-2'>Source</th>
                             <th className='py-2'>Destination</th>
-                            <th className='py-2'>Cost</th>
-                            <th className='py-2'>Weight</th>
                             <th className='py-2'>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {array.map((order) => (
-                            <tr key={order.id} className='border-b border-gray-300'>
+                        {array.map((order, index) => (
+                            <tr key={index} className='border-b border-slate-400 bg-slate-100'>
                                 <td className='py-2'>{order.user}</td>
+                                <td className='py-2'>{order.shipper}</td>
+                                <td className='py-2'>{order.weight}</td>
+                                <td className='py-2'>{order.cost}</td>
                                 <td className='py-2'>{order.source}</td>
                                 <td className='py-2'>{order.destination}</td>
-                                <td className='py-2'>{order.cost}</td>
-                                <td className='py-2'>{order.weight}</td>
                                 <td className='py-2'>{order.status}</td>
                             </tr>
                         ))}
