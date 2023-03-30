@@ -1,4 +1,4 @@
-# Completed
+# P4 - FRONTEND PROGRAMMING
 - Live: https://shipmantra-filtertable.netlify.app/
 
 ## Instructions
@@ -9,3 +9,7 @@
 ## Remarks for the reviewer:
 
 - I've used ReactJS and TailwindCSS for this assignment.
+
+name: Soham Datta
+
+email: sohamdatta34@gmail.com
