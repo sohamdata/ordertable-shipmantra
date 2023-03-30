@@ -256,7 +256,7 @@ const Table = () => {
                 </div>
                 <div className='flex flex-col sm:flex-row justify-between items-center mt-4'>
                     <div className='flex flex-col sm:flex-row items-center'>
-                        <input className='bg-gray-200 rounded-md py-2 px-5 outline-none '
+                        <input className='bg-gray-200 rounded-md py-2 px-5 outline-none shadow-xl'
                             type='text'
                             value={sourceValue}
                             placeholder='Enter source'
@@ -275,7 +275,7 @@ const Table = () => {
             </div>
             <div className='px-4 sm:px-[10vw] mt-6 text-center'>
                 <button
-                    className='bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 outline-none'
+                    className='bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 outline-none shadow-xl'
                     onClick={handleResetClick}
                 >
                     Remove Filters </button>
@@ -310,7 +310,11 @@ const Table = () => {
                                 <td className='py-2'>{order.cost}</td>
                                 <td className='py-2'>{order.source}</td>
                                 <td className='py-2'>{order.destination}</td>
-                                <td className='py-2'>{order.status}</td>
+                                {order.status === 'out-for-delivery' ? (
+                                    <td className='py-2 text-yellow-500'>{order.status}</td>
+                                ) : (
+                                    <td className='py-2 text-green-500'>{order.status}</td>
+                                )}
                             </tr>
                         ))}
                     </tbody>
