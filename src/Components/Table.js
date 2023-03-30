@@ -211,7 +211,7 @@ const Table = () => {
                         <div className='flex items-center'>
                             <input
                                 type='checkbox'
-                                className='mr-2'
+                                className='mr-2 cursor-pointer'
                                 checked={outForDelivery}
                                 onChange={outForDeliveryClick}
                             />
@@ -220,7 +220,7 @@ const Table = () => {
                         <div className='flex items-center ml-4'>
                             <input
                                 type='checkbox'
-                                className='mr-2'
+                                className='mr-2 cursor-pointer'
                                 checked={delivered}
                                 onChange={deliveredClick}
                             />
@@ -236,8 +236,9 @@ const Table = () => {
                                 max='4000'
                                 value={costRange}
                                 onChange={(e) => handleRangeChange('cost', e.target.value)}
+                                className='cursor-pointer'
                             />
-                            <span className='ml-2'>{costRange}</span>
+                            <span className='mx-4'>{costRange}</span>
                         </div>
                         <div className='flex items-center ml-4'>
                             <label className='mr-2'>Weight Range</label>
@@ -247,15 +248,15 @@ const Table = () => {
                                 max='20'
                                 value={weightRange}
                                 onChange={(e) => handleRangeChange('weight', e.target.value)}
+                                className='cursor-pointer'
                             />
-                            <span className='ml-2'>{weightRange}</span>
+                            <span className='mx-4'>{weightRange}</span>
                         </div>
                     </div>
                 </div>
                 <div className='flex flex-col sm:flex-row justify-between items-center mt-4'>
                     <div className='flex flex-col sm:flex-row items-center'>
-                        <label className='mr-2'>Source</label>
-                        <input className='bg-gray-200 rounded-full px-2'
+                        <input className='bg-gray-200 rounded-md py-2 px-5 outline-none '
                             type='text'
                             value={sourceValue}
                             placeholder='Enter source'
@@ -265,7 +266,7 @@ const Table = () => {
                     <div className='flex flex-col sm:flex-row items-center mt-4 sm:mt-0'>
                         <label className='mr-2'>Sort By</label>
                         <select value={selectValue} onChange={handleSelectChange}>
-                            <option value='none'>None</option>
+                            <option value='none'>Original</option>
                             <option value='ascending'>Ascending</option>
                             <option value='descending'>Descending</option>
                         </select>
@@ -274,28 +275,33 @@ const Table = () => {
             </div>
             <div className='px-4 sm:px-[10vw] mt-6 text-center'>
                 <button
-                    className='bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600'
+                    className='bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 outline-none'
                     onClick={handleResetClick}
                 >
                     Remove Filters </button>
 
             </div>
 
-            <div className='px-4 sm:px-[10vw] mt-6'>
+            <div className='px-4 sm:px-[10vw] mt-6 mx-5'>
                 <table className='w-full my-10'>
                     <caption className='text-2xl font-bold pb-4'>Orders</caption>
                     <thead>
                         <tr className='border-b-2 border-black bg-slate-300'>
-                            <th className='py-2'>User</th>
+                            <th className='py-2 rounded-tl-lg'>User</th>
                             <th className='py-2'>Shipper</th>
                             <th className='py-2'>Weight</th>
                             <th className='py-2'>Cost</th>
                             <th className='py-2'>Source</th>
                             <th className='py-2'>Destination</th>
-                            <th className='py-2'>Status</th>
+                            <th className='py-2 rounded-tr-lg'>Status</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {array.length === 0 ? (
+                            <tr className='border-b border-slate-400 bg-slate-100'>
+                                <td className='py-2' colSpan='7'> No orders found </td>
+                            </tr>
+                        ) : null}
                         {array.map((order, index) => (
                             <tr key={index} className='border-b border-slate-400 bg-slate-100'>
                                 <td className='py-2'>{order.user}</td>
