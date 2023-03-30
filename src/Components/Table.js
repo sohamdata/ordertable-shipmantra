@@ -215,7 +215,7 @@ const Table = () => {
                                 checked={outForDelivery}
                                 onChange={outForDeliveryClick}
                             />
-                            <label>Out for Delivery</label>
+                            <label className='text-yellow-500'>Out for Delivery</label>
                         </div>
                         <div className='flex items-center ml-4'>
                             <input
@@ -224,7 +224,7 @@ const Table = () => {
                                 checked={delivered}
                                 onChange={deliveredClick}
                             />
-                            <label>Delivered</label>
+                            <label className='text-green-500'>Delivered</label>
                         </div>
                     </div>
                     <div className='flex flex-col sm:flex-row items-center mt-4 sm:mt-0'>
@@ -275,7 +275,7 @@ const Table = () => {
             </div>
             <div className='px-4 sm:px-[10vw] mt-6 text-center'>
                 <button
-                    className='bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 outline-none shadow-xl'
+                    className='bg-indigo-500 text-white px-4 py-2 rounded-full hover:bg-indigo-600 outline-none shadow-xl'
                     onClick={handleResetClick}
                 >
                     Remove Filters </button>
