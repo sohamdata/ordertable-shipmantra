@@ -287,7 +287,7 @@ const Table = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex flex-col items-center justify-center'>
+            <div className='flex flex-row items-center justify-between sm:px-[10vw] mt-6'>
                 <div className='flex items-center my-5'>
                     <button
                         className='bg-indigo-500 text-white px-4 py-2 rounded-full hover:bg-indigo-600 outline-none shadow-xl'
