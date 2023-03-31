@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Orders from './Orders.json';
+import AddOrderModal from './AddOrderModal';
 
 const Table = () => {
     const [ascendingClick, setAscendingClick] = useState(false);
@@ -11,6 +12,7 @@ const Table = () => {
     const [weightRange, setWeightRange] = useState(0);
     const [selectValue, setSelectValue] = useState('');
     const [sourceValue, setSourceValue] = useState('');
+    const [showModal, setShowModal] = useState(false);
 
     const handleOrdersFiltering = (orders, filterOptions) => {
         return orders.filter(order => {
@@ -203,6 +205,18 @@ const Table = () => {
         setSourceValue('');
     };
 
+    const handleAddOrder = (newOrder) => {
+        setArray([newOrder, ...array]);
+    };
+
+    const handleShowModal = () => {
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
     return (
         <>
             <div className='px-4 sm:px-[10vw] mt-6 text-[1.3rem] text-center text-base'>
@@ -273,15 +287,25 @@ const Table = () => {
                     </div>
                 </div>
             </div>
-            <div className='px-4 sm:px-[10vw] mt-6 text-center'>
-                <button
-                    className='bg-indigo-500 text-white px-4 py-2 rounded-full hover:bg-indigo-600 outline-none shadow-xl'
-                    onClick={handleResetClick}
-                >
-                    Remove Filters </button>
-
+            <div className='flex flex-col items-center justify-center'>
+                <div className='flex items-center my-5'>
+                    <button
+                        className='bg-indigo-500 text-white px-4 py-2 rounded-full hover:bg-indigo-600 outline-none shadow-xl'
+                        onClick={handleResetClick}
+                    >
+                        Remove Filters </button>
+                </div>
+                <div className='flex items-center'>
+                    <button
+                        className='bg-indigo-500 text-white px-4 py-2 rounded-full hover:bg-indigo-600 outline-none shadow-xl'
+                        onClick={handleShowModal}
+                    >
+                        Add new order </button>
+                </div>
             </div>
-
+            {showModal ? (
+                <AddOrderModal showModal={showModal} onClose={handleCloseModal} onAdd={handleAddOrder} />
+            ) : null}
             <div className='px-4 sm:px-[10vw] mt-6 mx-5'>
                 <table className='w-full my-10'>
                     <caption className='text-2xl font-bold pb-4'>Orders</caption>
