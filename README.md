@@ -9,6 +9,7 @@
 ## Remarks for the reviewer:
 
 - I've used ReactJS and TailwindCSS for this assignment.
+- New orders are inserted at the top of the table.
 
 name: Soham Datta
 
